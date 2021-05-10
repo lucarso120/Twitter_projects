@@ -49,4 +49,3 @@ if len(memory_title) >= 10:
 # ver pq n ta postando
 # adicionar o link
 # testar de novo aa postagem
-# publicar no repositorio
