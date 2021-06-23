@@ -36,8 +36,8 @@ def get_last_status():
         ids.append(status.id)
     return ids[0]
 
-def update_reply():
-    api.update_status('@isabellacmo Para saber mais, acesse: https://www.parlamento.pt/Paginas/UltimasIniciativasEntradas.aspx ', in_reply_to_status_id = get_last_status())
+def update_reply(link):
+    api.update_status('@isabellacmo Para saber mais, acesse: {}{}'. format('https://www.parlamento.pt', link), in_reply_to_status_id = get_last_status())
 
 import time
 
@@ -46,6 +46,7 @@ for title in titles:
     soup2 = BeautifulSoup(title, 'lxml')
     tit = soup2.find('p', {'class': 'title'})
     desc = soup2.find('p', {'class': 'desc'})
+    link = soup2.find('a', href=True)
     if tit not in memory_title:
         title_content = [i for i in tit.text if i != '\n']
         title_content = ''.join(title_content)
@@ -58,9 +59,8 @@ for title in titles:
 
 
         update(content)
-        time.sleep(5)
-        update_reply()
-        time.sleep(5)
+        update_reply(link['href'])
+        time.sleep(10)
         if len(content_memory) >= 10:
             del content_memory [-1]
 
