@@ -1,4 +1,4 @@
-# A Bot for tracking the Portuguese Parlament actions
+# A Bot for tracking the Portuguese Parliament actions
 
 The purpose of this project is to create a twitter account that automatically updates parlamentary activity as they are published in the official website.
 For this, I did some we scrapping to retrieve data from the website, using BeautifulSoup4.
